@@ -2,7 +2,7 @@
 saves card details in a persistent text file'''
 import shelve
 
-def updateCards(name, stats):
+def add_card(name, stats):
     '''updates text file with card data'''
     d = shelve.open('cards.txt')
     data = d['cards']
@@ -10,11 +10,23 @@ def updateCards(name, stats):
     d['cards'] = data
     d.close()
 
-def returnCards():
+def remove_card(name):
+    '''removes card'''
+    d = shelve.open('cards.txt')
+    data = d['cards']
+    del data[name]
+    d['cards'] = data
+    d.close()
+    
+def return_cards():
     '''returns card data from text file'''
     d = shelve.open('cards.txt')
     data = d['cards']
     d.close()
-    for name, stats in data.items():
-        print(f"{name}, {stats}\n")
-returnCards()
+    print(data)
+
+card_name = input("Enter new card name: ")
+card_stats = input("Enter stats: ")
+stats_list = list(map(int, str(card_stats[0])))
+add_card(card_name, stats_list)
+return_cards()
