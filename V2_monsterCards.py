@@ -1,7 +1,7 @@
 '''V1_monsterCards.py
 main program that calls other functions'''
 import sys
-from V1_updateCards import *
+from V2_addCards import add_card
 
 def welcome():
     '''welcome()
@@ -13,16 +13,8 @@ def welcome():
           '[3] Delete Card\n[4] Print all cards\n[5] Exit\n'))
     
     if choice == 1:
-        name = input('What is the name of your card?\n')
-        
-        stats = []
-        strength = int(input("Enter strength (1-25): "))
-        speed = int(input("Enter speed (1-25): "))
-        stealth = int(input("Enter stealth (1-25): "))
-        cunning = int(input("Enter cunning (1-25): "))
-        stats.extend([strength, speed, stealth, cunning])
-
-        add_card(name, stats)
+        name = input('What is the name of your card you would like to add?\n')
+        add_card(name)
     elif choice == 2:
         name = input('What is the name of the card you would like to search for')
         search_cards(name)

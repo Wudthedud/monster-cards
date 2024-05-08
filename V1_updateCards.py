@@ -25,8 +25,14 @@ def return_cards():
     d.close()
     print(data)
 
-card_name = input("Enter new card name: ")
-card_stats = input("Enter stats: ")
-stats_list = list(map(int, str(card_stats[0])))
-add_card(card_name, stats_list)
-return_cards()
+def search_cards(name):
+    '''searches for cards'''
+    d = shelve.open('cards.txt')
+    data = d['cards']
+    d.close
+    if name in data.keys():
+        print(data.get(name))
+    else:
+        print("Card not found")
+
+
