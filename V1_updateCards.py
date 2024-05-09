@@ -34,5 +34,3 @@ def search_cards(name):
         print(data.get(name))
     else:
         print("Card not found")
-
-

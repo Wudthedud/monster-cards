@@ -1,7 +1,7 @@
-'''V1_strCheck.py
-checks if string is not empty and is only made up of letters'''
+'''V1_strCheck.py'''
 
 def strCheck(question):
+    '''checks if string is not empty and only made up of letters'''
     str = input(question)
     while True:
         if len(str) > 0 and str.isalpha():
@@ -12,6 +12,7 @@ def strCheck(question):
     return str
 
 def cards_intCheck(question):
+    '''checks if integer allowed to be card value, between 1-25'''
     int = input(question)
     while True:
         try:
