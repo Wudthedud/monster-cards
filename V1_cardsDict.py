@@ -68,10 +68,8 @@ def reset():
             'froststep': [14, 14, 17, 4],
             'wispgoul': [17, 19, 3, 2],
             'test': [1, 1, 1, 1],
-            'ad': [0],
             'adsasd': [1, 1, 1, 1]}
     d['cards'] = data
     d.close()
     
 reset()
-

@@ -29,7 +29,6 @@ def search_cards(name):
     '''searches for cards'''
     d = shelve.open('cards.txt')
     data = d['cards']
-    d.close
     if name in data.keys():
         print(data.get(name))
     else:

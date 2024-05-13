@@ -4,6 +4,7 @@ import sys
 from V2_addCards import add_card
 from V2_printCards import return_cards
 from V2_searchCards import search_cards
+from V2_removeCard import remove_card
 
 def welcome():
     '''welcome()

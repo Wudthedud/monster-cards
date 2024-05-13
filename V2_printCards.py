@@ -16,5 +16,3 @@ def return_cards():
         msg += f"Speed: {stats[1]}\nStealth: {stats[2]}\nCunning: {stats[3]}\n\n"
     msg += '-' * 15
     return msg
-
-print(return_cards())
