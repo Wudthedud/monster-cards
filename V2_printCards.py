@@ -13,7 +13,8 @@ def return_cards():
     msg = ""
     for name, stats in data.items():
         msg += f"-- {name.capitalize()} --\nStrength: {stats[0]}\n"
-        msg += f"Speed: {stats[1]}\nStealth: {stats[2]}\nCunning: {stats[3]}"
-        msg += '*' * 10
+        msg += f"Speed: {stats[1]}\nStealth: {stats[2]}\nCunning: {stats[3]}\n\n"
+    msg += '-' * 15
+    return msg
 
-return_cards()
+print(return_cards())

@@ -2,14 +2,14 @@
 
 def str_check(question):
     '''checks if string is not empty and only made up of letters'''
-    str = input(question)
+    msg = input(question)
     while True:
-        if len(str) > 0 and str.isalpha():
+        if len(msg) > 0 and msg.isalpha():
             break
         else:
             print('Please enter a valid string')
-            str = input(question)
-    return str
+            msg = input(question)
+    return msg
 
 def card_intcheck(question):
     '''checks if integer allowed to be card value, between 1-25'''
