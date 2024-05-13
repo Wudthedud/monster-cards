@@ -10,8 +10,10 @@ def return_cards():
     d.close()
     print(data)
     
+    msg = ""
     for name, stats in data.items():
-        print(f"-- {name.capitalize()} --")
-        print(f"Strength: {stats[0]}
-              f"Speed: {stats[1]})
+        msg += f"-- {name.capitalize()} --\nStrength: {stats[0]}\n"
+        msg += f"Speed: {stats[1]}\nStealth: {stats[2]}\nCunning: {stats[3]}"
+        msg += '*' * 10
+
 return_cards()

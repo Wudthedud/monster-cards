@@ -17,7 +17,7 @@ def remove_card(name):
     del data[name]
     d['cards'] = data
     d.close()
-    
+
 def return_cards():
     '''returns card data from text file'''
     d = shelve.open('cards.txt')

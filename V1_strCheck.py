@@ -1,6 +1,6 @@
 '''V1_strCheck.py'''
 
-def strCheck(question):
+def str_check(question):
     '''checks if string is not empty and only made up of letters'''
     str = input(question)
     while True:
@@ -11,18 +11,18 @@ def strCheck(question):
             str = input(question)
     return str
 
-def cards_intCheck(question):
+def card_intcheck(question):
     '''checks if integer allowed to be card value, between 1-25'''
-    int = input(question)
+    num = input(question)
     while True:
         try:
-            int = int(int)
+            num = int(num)
             if 0 < int <= 25:
                 break
             else:
-                print('Please enter a valid integer')
-                int = input(question)
+                print('Please enter an integer between 1 and 25')
+                num = input(question)
         except ValueError:
             print('Please enter an integer')
-            int = input(question)
-    return int
+            num = input(question)
+    return num
