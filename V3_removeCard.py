@@ -1,5 +1,5 @@
 '''V2_removeCards.py
-removes selected card'''
+removes selected card, adds error checking'''
 import shelve
 
 def remove_card(name):
@@ -14,3 +14,4 @@ def remove_card(name):
     except KeyError:
         msg = 'Card not found'
     d.close()
+    

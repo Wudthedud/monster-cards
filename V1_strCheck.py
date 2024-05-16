@@ -17,10 +17,25 @@ def card_intcheck(question):
     while True:
         try:
             num = int(num)
-            if 0 < int <= 25:
+            if 0 < num <= 25:
                 break
             else:
                 print('Please enter an integer between 1 and 25')
+                num = input(question)
+        except ValueError:
+            print('Please enter an integer')
+            num = input(question)
+    return num
+
+def intcheck(question, min, max):
+    num = input(question)
+    while True:
+        try:
+            num = int(num)
+            if min <= num <= max:
+                break
+            else:
+                print(f'Please enter an integer between {min} and {max}')
                 num = input(question)
         except ValueError:
             print('Please enter an integer')

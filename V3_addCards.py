@@ -1,13 +1,12 @@
 '''V2_addCards.py
-gets card details and saves them into the text file'''
+adds error checking'''
 import shelve
-from V1_strCheck import str_check, card_intcheck
+from V1_strCheck import card_intcheck
 
 
-def add_card():
+def add_card(name):
     '''updates text file with card data''' 
     stats = []
-    name = str_check("Enter the name of the new card")
     strength = card_intcheck("Enter strength (1-25)")
     strength = card_intcheck("Enter strength (1-25): ")
     speed = card_intcheck("Enter speed (1-25): ")
@@ -20,6 +19,5 @@ def add_card():
     data[name] = stats
     d['cards'] = data
     d.close()
-    print("Card added")
-
-add_card()
+    msg = 'Card added'
+    return msg
