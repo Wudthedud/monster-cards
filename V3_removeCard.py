@@ -13,5 +13,6 @@ def remove_card(name):
         return msg
     except KeyError:
         msg = 'Card not found'
+        return msg
     d.close()
     

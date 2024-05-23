@@ -16,8 +16,11 @@ def add_card(name):
 
     d = shelve.open('cards.txt')
     data = d['cards']
-    data[name] = stats
-    d['cards'] = data
     d.close()
-    msg = 'Card added'
+    if name in data:
+        msg = 'This card already exists'
+    else:
+        data[name] = stats
+        d['cards'] = data
+        msg = 'Card added'
     return msg
