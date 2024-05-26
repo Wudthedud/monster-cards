@@ -66,9 +66,7 @@ def reset():
             'vortexwing': [19, 13, 19, 2],
             'rotthing': [16, 7, 4, 12],
             'froststep': [14, 14, 17, 4],
-            'wispgoul': [17, 19, 3, 2],
-            'test': [1, 1, 1, 1],
-            'adsasd': [1, 1, 1, 1]}
+            'wispgoul': [17, 19, 3, 2]}
     d['cards'] = data
     d.close()
     

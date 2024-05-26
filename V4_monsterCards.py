@@ -3,10 +3,9 @@ main program that calls other functions'''
 import sys
 import easygui as eg
 from V4_addCards import add_card
-from V2_printCards import return_cards
-from V3_searchCards import search_cards
+from V4_printCards import return_cards
+from V4_searchCards import search_card
 from V4_removeCard import remove_card
-from V1_strCheck import str_check, intcheck
 
 # def welcome():
 #     '''prints welcome message to user'''
@@ -28,6 +27,15 @@ from V1_strCheck import str_check, intcheck
 #         print('Goodbye!')
 #         sys.exit()
 
+def input_check(question):
+    """template for questions in main program"""
+    name = eg.enterbox(f'What is the name of the card you would like to {question}?')
+    if name is not None:
+        return name
+    else:
+        eg.msgbox("Operation cancelled", f"{question.capitalize()} card")
+        return False
+
 def main():
     '''welome message converted to easygui'''
     while True:
@@ -35,14 +43,21 @@ def main():
                             'What would you like to do?', 'Welcome',
                             ('Add card', 'Remove card', 'Search for card', 'Print cards', 'Exit'))
         if choice == 'Add card':
-            name = eg.enterbox('What is the name of the card you would like to add?')
-            if name is None:
-                eg.msgbox("The name cannot be empty")
-            else:
+            name = input_check('add')
+            if name is not False:
                 add_card(name)
-        if choice == 'Remove card':
-            name = eg.enterbox('What is the name of the card you would like to remove?')
-            remove_card(name)
+        elif choice == 'Remove card':
+            name = input_check('remove')
+            if name is not False:
+                add_card(name)
+            else:
+                eg.msgbox("Operation cancelled", "Remove Card")
+        elif choice == 'Search for cards':
+            name = input_check('search for')
+            if name is not False:
+                search_card(name)
+        elif choice == 'Print cards':
+            return_cards()
         elif choice == 'Exit':
             eg.msgbox('Goodbye')
             sys.exit()

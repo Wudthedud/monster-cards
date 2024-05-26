@@ -3,10 +3,8 @@ removes selected card, adds error checking'''
 import shelve
 import easygui as eg
 
-
 def remove_card(name):
     '''adds easyGUI to the remove card function'''
-    from V4_monsterCards import main
     d = shelve.open('cards.txt')
     data = d['cards']
     try:
@@ -19,17 +17,16 @@ def remove_card(name):
             if not choice:
                 eg.msgbox('Card deletion cancelled', 'Remove ')
         else:
-            choice = eg.ynbox(f'The card {name} could not be found, would you like to try again?',
-                      'Remove card')
+            choice = eg.ynbox(f'The card "{name}" could not be found, woul dyou like to try again?',
+                              'Remove card')
             if choice:
                 name = eg.enterbox('What is the name of the card you would like to add?')
                 remove_card(name)
             else:
-                main()
+                return
     except KeyError:
         eg.msgbox(f'The card {name} could not be found')
-        main()
+        return
     except TypeError:
         eg.msgbox('Card removal cancelled')
-        main()
-    main()
+        return

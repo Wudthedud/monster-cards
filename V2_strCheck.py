@@ -1,7 +1,6 @@
 '''V2_strCheck.py
 add easyGUI'''
 import easygui as eg
-from V3_monsterCards import main
 
 def str_check(question, title):
     '''checks if string is not empty and only made up of letters'''
@@ -18,7 +17,7 @@ def str_check(question, title):
                         'Please make sure to enter a valid string (A-Z)')
                 msg = eg.enterbox(question, title)
     except TypeError:
-        main() #TODO change to most recent version
+        return
 
 def card_intcheck(question):
     '''checks if integer allowed to be card value, between 1-25'''

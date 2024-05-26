@@ -1,24 +1,83 @@
-'''V4_searchCards.py
+'''V4_search_cards.py
 saerches for a card and returns it's details'''
 import shelve
-from V4_monsterCards import main
+import easygui as eg
+from V4_removeCard import remove_card
 
-def search_cards(name):
+def search_card(name):
     d = shelve.open('cards.txt')
     data = d['cards']
     d.close
     if name in data.keys():
         stats = data.get(name)
-        msg = ""
-        msg += f"-- {name.capitalize()} --\nStrength: {stats[0]}\n"
-        msg += f"Speed: {stats[1]}\nStealth: {stats[2]}\nCunning: {stats[3]}\n"
-        msg += '-' * 15
-        return msg
+        choice = eg.buttonbox(f"Card found:\n\n---{name.capitalize()}---\nStrength: {stats[0]}\n"
+                  f"Speed: {stats[1]}\nStealth: {stats[2]}\nCunning: {stats[3]}\n\n"
+                  "What would you like to do?", "Search for a card", 
+                  ["Edit card", "Remove Card", "Go back"])
+        if choice == "Edit card":
+            edit_card(name)
+        elif choice == "Remove Card":
+            remove_card(name)
+        elif choice == "Go back":
+            return
     else:
-        print("Card not found")
+        choice = eg.ynbox(f'The card "{name}" could not be found, would dyou like to try again?',
+                          'Search for a card')
         
-def search():
+def edit_card(name):
     d = shelve.open('cards.txt')
     data = d['cards']
-    d.close
-    
+    stats = data.get(name)
+    edit = eg.buttonbox("What would you like to edit", "Edit a card",
+                                 ["Edit name", "Edit stats"])
+    if edit == "Edit name":
+        while True:
+            new_name = eg.enterbox('What would you like to rename the card to?')
+            if new_name is None:
+                eg.msgbox("Operation cancelled")
+                search_card(name)
+            elif new_name == "":
+                eg.msgbox("This field cannot be empty", "Edit card")
+            else:
+                confirm = eg.ynbox(f"Here is your new card:"
+                                    f"\n\n---{new_name.capitalize()}---\nStrength: {stats[0]}\n"
+                                    f"Speed: {stats[1]}\nStealth: {stats[2]}\n"
+                                    f"Cunning: {stats[3]}\n\n","Confirm?", "Edit card")
+                if confirm:
+                    data[new_name] = data.pop[name]
+                    eg.msgbox("Operation completed", "Edit card")
+                    d['cards'] = data
+                    d.close()
+                else:
+                    eg.msgbox("Operation cancelled", "Edit card")
+                    search_card(name)
+    if edit == "Edit stats":
+        while True:
+            choice = eg.buttonbox("Which statistic would you like to edit?\n\n"
+                                    f"---{name.capitalize()}---\nStrength: {stats[0]}\n"
+                                    f"Speed: {stats[1]}\nStealth: {stats[2]}\n"
+                                    f"Cunning: {stats[3]}\n\n", "Edit card",
+                                    ['Strength', 'Stealth', 'Speed', 'Cunning', 'Cancel'])
+            if choice in ['Strength', 'Stealth', 'Speed', 'Cunning']:
+                new_stat = eg.integerbox('What would you like to rename the card to?')
+                if new_stat is None:
+                    eg.msgbox("Operation cancelled")
+                    edit_card(name)
+                elif new_stat == "":
+                    eg.msgbox("This field cannot be empty", "Edit card")
+                key = {'Strength': 0, 'Stealth': 1, 'Speed': 2, 'Cunning': 3}
+                stats[key[choice]] = new_stat
+                confirm = eg.ynbox(f"Here is your new card:"
+                                        f"\n\n---{new_name.capitalize()}---\nStrength: {stats[0]}\n"
+                                        f"Speed: {stats[1]}\nStealth: {stats[2]}\n"
+                                        f"Cunning: {stats[3]}\n\n","Confirm?", "Edit card")
+                if confirm:
+                    data[name] = stats
+                    eg.msgbox("Operation completed", "Edit card")
+                    d['cards'] = data
+                    d.close()
+                else:
+                    eg.msgbox("Operation cancelled")
+                    search_card(name)
+            elif choice == "Cancel":
+                edit_card(name)
