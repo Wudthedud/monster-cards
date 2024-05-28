@@ -17,7 +17,7 @@ def remove_card(name):
             if not choice:
                 eg.msgbox('Card deletion cancelled', 'Remove ')
         else:
-            choice = eg.ynbox(f'The card "{name}" could not be found, woul dyou like to try again?',
+            choice = eg.ynbox(f'The card "{name}" could not be found, would you like to try again?',
                               'Remove card')
             if choice:
                 name = eg.enterbox('What is the name of the card you would like to add?')

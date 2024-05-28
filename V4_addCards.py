@@ -13,7 +13,7 @@ def add_card(name):
             eg.msgbox(f'This card {name} already exists', 'Cancelled add card')
             return
         stats = []
-        key = {0: 'strength', 1: 'speed', 2: 'stealth', 3: 'cunning'}
+        key = ['strength', 'speed', 'stealth', 'cunning']
         for i in range(4):
             while True:
                 stat = eg.integerbox(f'Enter {key[i]} (1-25):', 'Add card', None, 1, 25)

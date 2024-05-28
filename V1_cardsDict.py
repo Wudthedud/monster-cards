@@ -69,5 +69,4 @@ def reset():
             'wispgoul': [17, 19, 3, 2]}
     d['cards'] = data
     d.close()
-    
 reset()
