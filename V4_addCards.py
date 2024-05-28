@@ -10,7 +10,7 @@ def add_card(name):
     data = d['cards']
     try:
         if name in data:
-            eg.msgbox(f'This card {name} already exists', 'Cancelled add card')
+            eg.msgbox(f'The card "{name.capitalize()}" already exists', 'Cancelled add card')
             return
         stats = []
         key = ['strength', 'speed', 'stealth', 'cunning']
