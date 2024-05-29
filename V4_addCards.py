@@ -18,7 +18,7 @@ def add_card(name):
             while True:
                 stat = eg.integerbox(f'Enter {key[i]} (1-25):', 'Add card', None, 1, 25)
                 if stat is None:
-                    eg.msgbox("Operation cancelled")
+                    eg.msgbox("Operation cancelled", "Add card")
                     return
                 break
             stats.append(stat)

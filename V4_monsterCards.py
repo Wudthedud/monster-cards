@@ -40,9 +40,7 @@ def main():
             if name is not None:
                 add_card(name)
         elif choice == 'Remove card':
-            name = input_check('remove')
-            if name is not None:
-                remove_card(name)
+                remove_card()
         elif choice == 'Search for cards':
             name = input_check('search for')
             if name is not None:
@@ -55,3 +53,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+#TODO add instructions
