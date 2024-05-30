@@ -3,26 +3,30 @@ removes selected card, adds error checking'''
 import shelve
 import easygui as eg
 
-def remove_card():
+def remove_card(name):
     '''adds easyGUI to the remove card function'''
     d = shelve.open('cards.txt')
     data = d['cards']
-    while True:
-        keys = [key.title() for key in data.keys()]
-        name = eg.choicebox("Which card would you like to remove?", "Remove card", keys)
-        if name is None:
-            eg.msgbox('Operation cancelled', 'Remove card')
-            return
-        choice = eg.ynbox(f'Are you sure you want to remove "{name}"?', 'Remove card')
-        if choice:
-            del data[name.lower()]
-            d['cards'] = data
-            d.close
-            try_again = eg.ynbox(f'Card "{name}" removed, do you want to remove another card?',
-                                  'Remove card')
-            if not try_again:
+    try:
+        if name in data:
+            choice = eg.ynbox(f'Are you sure you want to remove {name}?', 'Remove card')
+            if choice:
+                del data[name]
+                d['cards'] = data
+                eg.msgbox(f"Card '{name} removed")
+            if not choice:
+                eg.msgbox('Card deletion cancelled', 'Remove ')
+        else:
+            choice = eg.ynbox(f'The card "{name}" could not be found, would you like to try again?',
+                              'Remove card')
+            if choice:
+                name = eg.enterbox('What is the name of the card you would like to add?')
+                remove_card(name)
+            else:
                 return
-        if not choice:
-            try_again = eg.ynbox('Operation cancelled, would you like to try again?', 'Remove card')
-            if not try_again:
-                return
+    except KeyError:
+        eg.msgbox(f'The card {name} could not be found')
+        return
+    except TypeError:
+        eg.msgbox('Card removal cancelled')
+        return

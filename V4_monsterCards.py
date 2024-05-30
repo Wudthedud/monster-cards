@@ -9,25 +9,20 @@ from V4_removeCard import remove_card
 
 def input_check(question):
     """template for questions in main program"""
-    while True:
-        user_input = eg.enterbox(f'What is the name of the card you would like to {question}?',
-                           f"{question.capitalize()} card")
-        if user_input == "":
-            retry = eg.ynbox('This field cannot be empty\nTry again?', f"{question.capitalize()} card")
-            if not retry:
-                eg.msgbox("Operation cancelled", f"{question.capitalize()} card")
-                return None
-        elif user_input is None:
+    user_input = eg.enterbox(f'What is the name of the card you would like to {question}?',
+                       f"{question.capitalize()} card")
+    if user_input is not None and user_input != "":
+        return user_input
+    if user_input == "":
+        retry = eg.ynbox('This field cannot be empty\nTry again?', f"{question.capitalize()} card")
+        if retry:
+            input_check(question)
+        else:
             eg.msgbox("Operation cancelled", f"{question.capitalize()} card")
             return None
-        elif not user_input.isalpha():
-            retry = eg.ynbox('This field can only contain alphabetic characters\nTry again?',
-                             f"{question.capitalize()} card")
-            if not retry:
-                eg.msgbox("Operation cancelled", f"{question.capitalize()} card")
-                return None
-        else:
-            return user_input.lower().strip()
+    else:
+        eg.msgbox("Operation cancelled", f"{question.capitalize()} card")
+        return None
 
 def main():
     '''welome message converted to easygui'''
@@ -40,7 +35,9 @@ def main():
             if name is not None:
                 add_card(name)
         elif choice == 'Remove card':
-                remove_card()
+            name = input_check('remove')
+            if name is not None:
+                remove_card(name)
         elif choice == 'Search for cards':
             name = input_check('search for')
             if name is not None:
@@ -53,5 +50,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-#TODO add instructions

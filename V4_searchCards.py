@@ -2,42 +2,46 @@
 saerches for a card and returns it's details'''
 import shelve
 import easygui as eg
-from V4_removeCard import remove_card
+from V5_removeCard import remove_card
 
 def search_card(name):
     """searches for card within the dictionaryx"""
     d = shelve.open('cards.txt')
     data = d['cards']
     d.close
-    if name in data.keys():
-        stats = data.get(name)
-        choice = eg.buttonbox(f"Card found:\n\n---{name.capitalize()}---\nStrength: {stats[0]}\n"
-                  f"Speed: {stats[1]}\nStealth: {stats[2]}\nCunning: {stats[3]}\n\n"
-                  "What would you like to do?", "Search for a card", 
-                  ["Edit card", "Remove Card", "Go back"])
-        if choice == "Edit card":
-            choice2 = eg.buttonbox("What would you like to edit", "Edit a card",
-                                 ["Edit name", "Edit stats", "Go back"])
-            if choice2 == "Edit name":
-                edit_name(name)
-            elif choice2 == "Edit stats":
-                edit_stats(name)
-            else:
-                search_card(name)
-        elif choice == "Remove Card":
-            remove_card(name)
-        elif choice == "Go back":
+    while True:
+        keys = [key.title() for key in data.keys()]
+        name = eg.choicebox("Which card would you like to remove?", "Remove card", keys)
+        if name is None:
+            eg.msgbox('Operation cancelled', 'Remove card')
             return
-    else:
-        choice = eg.ynbox(f'The card "{name}" could not be found, would you like to try again?',
-                          'Search for a card')
-        if choice:
-            name = eg.enterbox('What is the name of the card you would like to search for?')
-            if name is not None:
-                search_card(name)
-            else:
-                eg.msgbox("Operation cancelled", "Search for card")
+        while True:
+            stats = data.get(name)
+            choice = eg.buttonbox(f"Card found:\n\n---{name.capitalize()}---\nStrength: {stats[0]}\n"
+                    f"Speed: {stats[1]}\nStealth: {stats[2]}\nCunning: {stats[3]}\n\n"
+                    "What would you like to do?", "Search for a card", 
+                    ["Edit card", "Remove Card", "Go back"])
+            if choice == "Edit card":
+                choice2 = eg.buttonbox("What would you like to edit", "Edit a card",
+                                    ["Edit name", "Edit stats", "Go back"])
+                if choice2 == "Edit name":
+                    edit_name(name)
+                elif choice2 == "Edit stats":
+                    edit_stats(name)
+            elif choice == "Remove Card":
+                remove_card(name)
+            elif choice == "Go back":
                 return
+            else:
+                choice = eg.ynbox(f'The card "{name}" could not be found, would you like to try again?',
+                                'Search for a card')
+                if choice:
+                    name = eg.enterbox('What is the name of the card you would like to search for?')
+                    if name is not None:
+                        search_card(name)
+                    else:
+                        eg.msgbox("Operation cancelled", "Search for card")
+                        return
 
 def edit_name(name):
     """edits a key within a dictionary"""
