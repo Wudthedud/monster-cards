@@ -17,9 +17,9 @@ def search_card(name):
             return
         while True:
             stats = data.get(name)
-            choice = eg.buttonbox(f"Card found:\n\n---{name.capitalize()}---\nStrength: {stats[0]}\n"
-                    f"Speed: {stats[1]}\nStealth: {stats[2]}\nCunning: {stats[3]}\n\n"
-                    "What would you like to do?", "Search for a card", 
+            choice = eg.buttonbox(f'Card found:\n\n---{name.capitalize()}---\nStrength: {stats[0]}'
+                                  f'\nSpeed: {stats[1]}\nStealth: {stats[2]}\nCunning: {stats[3]}'
+                                  '\n\nWhat would you like to do?', 'Search for a card', 
                     ["Edit card", "Remove Card", "Go back"])
             if choice == "Edit card":
                 choice2 = eg.buttonbox("What would you like to edit", "Edit a card",
@@ -33,8 +33,8 @@ def search_card(name):
             elif choice == "Go back":
                 return
             else:
-                choice = eg.ynbox(f'The card "{name}" could not be found, would you like to try again?',
-                                'Search for a card')
+                choice = eg.ynbox(f'The card "{name}" could not be found,'
+                                  f'would you like to try again?', 'Search for a card')
                 if choice:
                     name = eg.enterbox('What is the name of the card you would like to search for?')
                     if name is not None:
@@ -79,7 +79,7 @@ def edit_stats(name):
                                 f"---{name.capitalize()}---\nStrength: {stats[0]}\n"
                                 f"Speed: {stats[1]}\nStealth: {stats[2]}\n"
                                 f"Cunning: {stats[3]}\n\n", "Edit card",
-                                ['Strength', 'Stealth', 'Speed', 'Cunning', 'Cancel'])
+                                ['Strength', 'Speed', 'Stealth', 'Cunning', 'Cancel'])
         if choice in ['Strength', 'Stealth', 'Speed', 'Cunning']:
             new_stat = eg.integerbox('What would you like to rename the card to?')
             if new_stat is None:
@@ -87,12 +87,12 @@ def edit_stats(name):
                 search_card(name)
             elif new_stat == "":
                 eg.msgbox("This field cannot be empty", "Edit card")
-            key = {'Strength': 0, 'Stealth': 1, 'Speed': 2, 'Cunning': 3}
+            key = {'Strength': 0, 'Speed': 1, 'Stealth': 2, 'Cunning': 3}
             stats[key[choice]] = new_stat
             confirm = eg.ynbox(f"Here is your new card:"
                                     f"\n\n---{name.capitalize()}---\nStrength: {stats[0]}\n"
                                     f"Speed: {stats[1]}\nStealth: {stats[2]}\n"
-                                    f"Cunning: {stats[3]}\n\n","Confirm?", "Edit card")
+                                    f"Cunning: {stats[3]}\n\nConfirm?", "Edit card")
             if confirm:
                 data[name] = stats
                 eg.msgbox("Operation completed", "Edit card")
