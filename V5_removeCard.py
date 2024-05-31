@@ -1,10 +1,11 @@
-'''V4_removeCards.py
-removes selected card, adds error checking'''
+"""V4_removeCards.py
+removes selected card, adds error checking"""
 import shelve
 import easygui as eg
 
+
 def remove_card(name=None):
-    '''adds easyGUI to the remove card function'''
+    """adds easyGUI to the remove card function"""
     d = shelve.open('cards.txt')
     data = d['cards']
 
@@ -20,9 +21,10 @@ def remove_card(name=None):
         if choice:
             del data[name.lower()]
             d['cards'] = data
-            eg.msgbox(f'Card "{name.capitalize()}" removed','Remove card')
+            eg.msgbox(f'Card "{name.capitalize()}" removed', 'Remove card')
             d.close()
             return
         else:
             eg.msgbox('Operation cancelled', 'Remove card')
             return
+        

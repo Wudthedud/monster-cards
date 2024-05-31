@@ -1,4 +1,4 @@
-import easygui
+import easygui as eg
 
 data = {'stoneling': [7, 1, 25, 15],
         'vexscream': [1, 6, 21, 19],
@@ -11,21 +11,25 @@ data = {'stoneling': [7, 1, 25, 15],
         'froststep': [14, 14, 17, 4],
         'wispgoul': [17, 19, 3, 2]}
 
-def console_print():
-    """prints formatted cards to console"""
-    for name, stats in data.items():
-        msg = "\n"
-        width = len(name) + 8
-        msg += '-' * (width)
-        msg += f'\n|   {name}   |\n'
-        msg += '-' * (width)
-        msg += '\n'   
-        key = ['Strength', 'Speed', 'Stealth', 'Cunning']
-        for i, (key, stats) in enumerate(zip(key, stats)):
-            stats_msg = f'|{key}: {stats}'
-            filler = width - len(stats_msg) - 1
-            msg += stats_msg
-            msg += ' ' * filler
-            msg += '|\n'
-        msg += '-' * (width)
-        print(msg)
+keys = list(data.keys())
+pages = []
+for i in range(0, len(keys), 4):
+    page_keys = keys[i:i+4]
+    page_msg = "\n\n".join(f"---{key.capitalize()}---\nStrength: {data[key][0]}\n"
+                           f"Speed: {data[key][1]}\nStealth: {data[key][2]}\n"
+                           f"Cunning: {data[key][3]}\n" for key in page_keys)
+    pages.append(page_msg)
+
+current_page = 0
+
+while True:
+    msg = pages[current_page]
+    buttons = ["Next", "Back", "Exit"]
+    reply = eg.buttonbox(msg, "Data", buttons)
+
+    if reply == "Next":
+        current_page = min(current_page + 1, len(pages) - 1)
+    elif reply == "Back":
+        current_page = max(current_page - 1, 0)
+    elif reply == "Exit":
+        break

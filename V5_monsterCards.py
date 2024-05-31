@@ -1,24 +1,26 @@
-'''V4_monsterCards.py
-main program that calls other functions'''
+"""V4_monsterCards.py
+main program that calls other functions"""
 import sys
 import easygui as eg
 from V4_addCards import add_card
-from V4_printCards import return_cards
+from V5_printCards import print_gui
 from V5_searchCards import search_card
 from V5_removeCard import remove_card
 from V2_cardsDict import reset
 
+
 def welcome():
     """welcome message"""
-    welcome_choice = eg.buttonbox('Welcome to the Monster Card Game Catalogue!\n'
-    'This program allows you to manage a collection of monster cards.\n\n'
-    'Menu Options:\nAdd a new monster card: Create a new card and assign statistics to it.\n'
-    'Search for a monster card: Find an existing card and verify its details,'
-    'with the option to edit or remove if required.\nDelete a monster card:'
-    'Remove a card from the catalogue.\nExit: Quit the program.\n\n'
-    'Note: Any changes made to the catalogue will apply even when the program is closed.'
-    'If you wish to reset the catalogue to it\'s default state, press the "reset" button below.', 
-    'Welcome', ('Continue', 'Reset catalogue', 'Exit'))
+    msg = (
+        'Welcome to the Monster Card Game Catalogue!\n'
+        'This program allows you to manage a collection of monster cards.\n\n'
+        'Menu Options:\nAdd a new monster card: Create a new card and assign statistics to it.\n'
+        'Search for a monster card: Find an existing card and verify its details,'
+        'with the option to edit or remove if required.\nDelete a monster card: '
+        'Remove a card from the catalogue.\nExit: Quit the program.\n\n'
+        'Note: Any changes made to the catalogue will apply even when the program is closed.'
+        'If you wish to reset the catalogue to it\'s default state, press the "reset" button below.')
+    welcome_choice = eg.buttonbox(msg, 'Welcome', ['Continue', 'Reset catalogue', 'Exit'])
     if welcome_choice == 'Exit':
         sys.exit()
     elif welcome_choice == 'Reset catalogue':
@@ -32,7 +34,7 @@ def input_check(question):
     """template for questions in main program"""
     while True:
         user_input = eg.enterbox(f'What is the name of the card you would like to {question}?',
-                           f"{question.capitalize()} card")
+                                 f"{question.capitalize()} card")
         if user_input == "":
             retry = eg.ynbox('This field cannot be empty\nTry again?',
                              f"{question.capitalize()} card")
@@ -51,12 +53,13 @@ def input_check(question):
         else:
             return user_input.lower().strip()
 
+
 def main():
-    '''main menu'''
+    """main menu"""
     while True:
         choice = eg.buttonbox('Welcome to Monster Cards Catalogue\n'
-                            'What would you like to do?', 'Welcome',
-                            ('Add card', 'Remove card', 'Search for card', 'Print cards', 'Exit'))
+                              'What would you like to do?', 'Welcome',
+                              ['Add card', 'Remove card', 'Search for card', 'Print cards', 'Exit'])
         if choice == 'Add card':
             name = input_check('add')
             if name is not None:
@@ -66,7 +69,7 @@ def main():
         elif choice == 'Search for card':
             search_card()
         elif choice == 'Print cards':
-            return_cards()
+            print_gui()
         elif choice == 'Exit':
             eg.msgbox('Goodbye')
             sys.exit()
@@ -75,5 +78,3 @@ def main():
 if __name__ == "__main__":
     welcome()
     main()
-
-#TODO slpit print command

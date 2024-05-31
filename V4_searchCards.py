@@ -8,7 +8,7 @@ def search_card(name):
     """searches for card within the dictionaryx"""
     d = shelve.open('cards.txt')
     data = d['cards']
-    d.close
+    d.close()
     while True:
         keys = [key.title() for key in data.keys()]
         name = eg.choicebox("Which card would you like to remove?", "Remove card", keys)

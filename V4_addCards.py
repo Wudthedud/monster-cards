@@ -1,11 +1,11 @@
-'''V4_addCards.py
-adds error checking'''
+"""V4_addCards.py
+adds error checking"""
 import shelve
 import easygui as eg
 
 
 def add_card(name):
-    '''added GUI functionality to adding cards'''
+    """added GUI functionality to adding cards"""
     d = shelve.open('cards.txt')
     data = d['cards']
     try:
