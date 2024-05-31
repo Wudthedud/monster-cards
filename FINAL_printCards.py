@@ -1,4 +1,4 @@
-"""V5_printCards.py.
+"""FINAL_printCards.py.
 
 returns card details form txt file, adds easyGUI functionality
 """

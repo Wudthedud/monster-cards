@@ -2,7 +2,7 @@
 saerches for a card and returns it's details"""
 import shelve
 import easygui as eg
-from V5_removeCard import remove_card
+from FINAL_removeCard import remove_card
 
 
 def search_card(name):

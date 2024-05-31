@@ -2,7 +2,7 @@
 main program that calls other functions'''
 import sys
 import easygui as eg
-from V4_addCards import add_card
+from FINAL_addCards import add_card
 from V4_printCards import return_cards
 from V4_searchCards import search_card
 from V4_removeCard import remove_card

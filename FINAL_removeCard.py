@@ -1,4 +1,4 @@
-"""V4_removeCards.py
+"""FINAL_removeCards.py
 removes selected card, adds error checking"""
 import shelve
 import easygui as eg

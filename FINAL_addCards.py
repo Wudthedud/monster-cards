@@ -1,5 +1,5 @@
-"""V4_addCards.py
-adds error checking"""
+"""FINAL_addCards.py
+adds card to dictionary"""
 import shelve
 import easygui as eg
 
@@ -10,7 +10,7 @@ def add_card(name):
     data = d["cards"]
     try:
         if name in data:
-            eg.msgbox(f"The card '{name.capitalize()}' already exists", "Cancelled add card")
+            eg.msgbox(f"The card '{name.capitalize()} already exists", "Cancelled add card")
             return
         stats = []
         key = ["strength", "speed", "stealth", "cunning"]

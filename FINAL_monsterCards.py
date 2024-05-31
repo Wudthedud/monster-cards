@@ -1,11 +1,11 @@
-"""V4_monsterCards.py
-main program that calls other functions"""
+"""FINAL_monsterCards.py
+main program that calls other functions, welcome message and string checker"""
 import sys
 import easygui as eg
-from V4_addCards import add_card
-from V5_printCards import print_gui
-from V5_searchCards import search_card
-from V5_removeCard import remove_card
+from FINAL_addCards import add_card
+from FINAL_printCards import print_gui
+from FINAL_searchCards import search_card
+from FINAL_removeCard import remove_card
 from V2_cardsDict import reset
 
 

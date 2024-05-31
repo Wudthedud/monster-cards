@@ -1,8 +1,8 @@
-"""V4_search_cards.py
+"""FINAL_search_cards.py
 searches for a card and returns its details"""
 import shelve
 import easygui as eg
-from V5_removeCard import remove_card
+from FINAL_removeCard import remove_card
 
 
 def input_check():
@@ -29,7 +29,7 @@ def input_check():
 
 def search_card(name=None):
     """searches for card within the dictionary"""
-    from V5_monsterCards import main
+    from FINAL_monsterCards import main
     while True:
         d = shelve.open("cards.txt")
         data = d["cards"]
