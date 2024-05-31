@@ -1,16 +1,19 @@
-"""FINAL_addCards.py
-adds card to dictionary"""
+"""FINAL_addCards.py.
+
+adds card to dictionary
+"""
 import shelve
 import easygui as eg
 
 
 def add_card(name):
-    """added GUI functionality to adding cards"""
+    """Asks for name and stats, adds to dictionary once confirmed."""
     d = shelve.open("cards.txt")
     data = d["cards"]
     try:
         if name in data:
-            eg.msgbox(f"The card '{name.capitalize()} already exists", "Cancelled add card")
+            eg.msgbox(f"The card '{name.capitalize()} already exists",
+                      "Cancelled add card")
             return
         stats = []
         key = ["strength", "speed", "stealth", "cunning"]
@@ -24,8 +27,10 @@ def add_card(name):
                 break
             stats.append(stat)
 
-        if eg.ynbox(f"Are all the details correct?\n\n---{name.capitalize()}---\nStrength: {stats[0]}\n"
-                    f"Speed: {stats[1]}\nStealth: {stats[2]}\nCunning: {stats[3]}", "Add card"):
+        if eg.ynbox(f"Are all the details correct?"
+                    f"\n\n---{name.capitalize()}---"
+                    f"\nStrength: {stats[0]}\nSpeed: {stats[1]}\nStealth: "
+                    f"{stats[2]}\nCunning: {stats[3]}", "Add card"):
             data[name] = stats
             d["cards"] = data
             d.close()
@@ -33,8 +38,8 @@ def add_card(name):
         else:
             choice = eg.ynbox("Would you like to try again?", "Add card")
             if choice:
-                name = eg.enterbox("What is the name of the card you would like to add?",
-                                   "Add card")
+                name = eg.enterbox("What is the name of the card "
+                                   "you would like to add?", "Add card")
                 add_card(name)
             else:
                 return
