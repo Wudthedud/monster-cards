@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e92c0576-01f6-42ab-bdca-62abca996aea" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/V4_addCards.py" beforeDir="false" afterPath="$PROJECT_DIR$/V4_addCards.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/V4_searchCards.py" beforeDir="false" afterPath="$PROJECT_DIR$/V4_searchCards.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/V5_monsterCards.py" beforeDir="false" afterPath="$PROJECT_DIR$/V5_monsterCards.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/V5_printCards.py" beforeDir="false" afterPath="$PROJECT_DIR$/V5_printCards.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/V5_removeCard.py" beforeDir="false" afterPath="$PROJECT_DIR$/V5_removeCard.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/V5_searchCards.py" beforeDir="false" afterPath="$PROJECT_DIR$/V5_searchCards.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cards.txt.bak" beforeDir="false" afterPath="$PROJECT_DIR$/cards.txt.bak" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cards.txt.dat" beforeDir="false" afterPath="$PROJECT_DIR$/cards.txt.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test1.py" beforeDir="false" afterPath="$PROJECT_DIR$/test1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cards.txt.dir" beforeDir="false" afterPath="$PROJECT_DIR$/cards.txt.dir" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +34,9 @@
     &quot;accountId&quot;: &quot;7a354121-a595-43fc-a175-35458ab5537d&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>

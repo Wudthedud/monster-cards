@@ -1,8 +1,9 @@
-'''V4_search_cards.py
-saerches for a card and returns it's details'''
+"""V4_search_cards.py
+saerches for a card and returns it's details"""
 import shelve
 import easygui as eg
 from V5_removeCard import remove_card
+
 
 def search_card(name):
     """searches for card within the dictionaryx"""
@@ -19,11 +20,11 @@ def search_card(name):
             stats = data.get(name)
             choice = eg.buttonbox(f'Card found:\n\n---{name.capitalize()}---\nStrength: {stats[0]}'
                                   f'\nSpeed: {stats[1]}\nStealth: {stats[2]}\nCunning: {stats[3]}'
-                                  '\n\nWhat would you like to do?', 'Search for a card', 
-                    ["Edit card", "Remove Card", "Go back"])
+                                  '\n\nWhat would you like to do?', 'Search for a card',
+                                  ["Edit card", "Remove Card", "Go back"])
             if choice == "Edit card":
                 choice2 = eg.buttonbox("What would you like to edit", "Edit a card",
-                                    ["Edit name", "Edit stats", "Go back"])
+                                       ["Edit name", "Edit stats", "Go back"])
                 if choice2 == "Edit name":
                     edit_name(name)
                 elif choice2 == "Edit stats":
@@ -43,6 +44,7 @@ def search_card(name):
                         eg.msgbox("Operation cancelled", "Search for card")
                         return
 
+
 def edit_name(name):
     """edits a key within a dictionary"""
     d = shelve.open('cards.txt')
@@ -57,9 +59,9 @@ def edit_name(name):
             eg.msgbox("This field cannot be empty", "Edit card")
         else:
             confirm = eg.ynbox(f"Here is your new card:"
-                                f"\n\n---{new_name.capitalize()}---\nStrength: {stats[0]}\n"
-                                f"Speed: {stats[1]}\nStealth: {stats[2]}\n"
-                                f"Cunning: {stats[3]}\n\n","Confirm?", "Edit card")
+                               f"\n\n---{new_name.capitalize()}---\nStrength: {stats[0]}\n"
+                               f"Speed: {stats[1]}\nStealth: {stats[2]}\n"
+                               f"Cunning: {stats[3]}\n\n", "Confirm?", "Edit card")
             if confirm:
                 data[new_name] = data.pop[name]
                 eg.msgbox("Operation completed", "Edit card")
@@ -69,6 +71,7 @@ def edit_name(name):
                 eg.msgbox("Operation cancelled", "Edit card")
                 search_card(name)
 
+
 def edit_stats(name):
     """edits a key within a dictionary"""
     d = shelve.open('cards.txt')
@@ -76,10 +79,10 @@ def edit_stats(name):
     stats = data.get(name)
     while True:
         choice = eg.buttonbox("Which statistic would you like to edit?\n\n"
-                                f"---{name.capitalize()}---\nStrength: {stats[0]}\n"
-                                f"Speed: {stats[1]}\nStealth: {stats[2]}\n"
-                                f"Cunning: {stats[3]}\n\n", "Edit card",
-                                ['Strength', 'Speed', 'Stealth', 'Cunning', 'Cancel'])
+                              f"---{name.capitalize()}---\nStrength: {stats[0]}\n"
+                              f"Speed: {stats[1]}\nStealth: {stats[2]}\n"
+                              f"Cunning: {stats[3]}\n\n", "Edit card",
+                              ['Strength', 'Speed', 'Stealth', 'Cunning', 'Cancel'])
         if choice in ['Strength', 'Stealth', 'Speed', 'Cunning']:
             new_stat = eg.integerbox('What would you like to rename the card to?')
             if new_stat is None:
@@ -90,9 +93,9 @@ def edit_stats(name):
             key = {'Strength': 0, 'Speed': 1, 'Stealth': 2, 'Cunning': 3}
             stats[key[choice]] = new_stat
             confirm = eg.ynbox(f"Here is your new card:"
-                                    f"\n\n---{name.capitalize()}---\nStrength: {stats[0]}\n"
-                                    f"Speed: {stats[1]}\nStealth: {stats[2]}\n"
-                                    f"Cunning: {stats[3]}\n\nConfirm?", "Edit card")
+                               f"\n\n---{name.capitalize()}---\nStrength: {stats[0]}\n"
+                               f"Speed: {stats[1]}\nStealth: {stats[2]}\n"
+                               f"Cunning: {stats[3]}\n\nConfirm?", "Edit card")
             if confirm:
                 data[name] = stats
                 eg.msgbox("Operation completed", "Edit card")
