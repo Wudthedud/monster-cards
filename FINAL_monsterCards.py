@@ -6,7 +6,7 @@ from FINAL_addCards import add_card
 from FINAL_printCards import print_gui
 from FINAL_searchCards import search_card
 from FINAL_removeCard import remove_card
-from V2_cardsDict import reset
+from FINAL_cardsDict import reset
 
 
 def welcome():
@@ -18,7 +18,7 @@ def welcome():
         "Search for a monster card: Find an existing card and verify its details,"
         "with the option to edit or remove if required.\nDelete a monster card: "
         "Remove a card from the catalogue.\nExit: Quit the program.\n\n"
-        "Note: Any changes made to the catalogue will apply even when the program is closed."
+        "Note: Any changes made to the catalogue will apply even when the program is closed. "
         "If you wish to reset the catalogue to it\"s default state, press the 'reset' button below.")
     welcome_choice = eg.buttonbox(msg, "Welcome", ["Continue", "Reset catalogue", "Exit"])
     if welcome_choice == "Exit":
