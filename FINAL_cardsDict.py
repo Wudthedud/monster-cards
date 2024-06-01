@@ -1,8 +1,12 @@
-"""dictonary of cards, resets dictionary to original"""
+"""FINAL_cardsDict.py.
+
+dictionary of cards, resets dictionary to original
+"""
 import shelve
 
+
 def reset():
-    """updates text file with card data"""
+    """Update text file with card data."""
     d = shelve.open('cards.txt')
     data = {'stoneling': [7, 1, 25, 15],
             'vexscream': [1, 6, 21, 19],
