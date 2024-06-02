@@ -12,6 +12,7 @@ from FINAL_removeCard import remove_card
 from FINAL_cardsDict import reset
 
 def install(package):
+    """Installs latest version of easyGUI if not already installed"""
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
     
 def welcome():
