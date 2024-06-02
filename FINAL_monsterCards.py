@@ -4,13 +4,16 @@ main program that calls other functions, welcome message and string checker
 """
 import sys
 import easygui as eg
+import subprocess
 from FINAL_addCards import add_card
 from FINAL_printCards import print_gui
 from FINAL_searchCards import search_card
 from FINAL_removeCard import remove_card
 from FINAL_cardsDict import reset
 
-
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+    
 def welcome():
     """Welcome message, and option to reset catalogue."""
     msg = (
@@ -88,5 +91,6 @@ def main():
 
 
 if __name__ == "__main__":
+    install('easygui')
     welcome()
     main()
